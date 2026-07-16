@@ -54,7 +54,7 @@ file=$files
 ========================script V.6========================
 
 #### CONFIG ####
-:local toemail "reiygame@gmail.com"
+:local toemail "email-penerima@gmail.com"
 
 #### AMBIL INFO ROUTER ####
 :local sysname [/system identity get name]
