@@ -63,7 +63,7 @@ Script ini cocok digunakan untuk:
 
 ## 📧 SMTP yang Digunakan
 
-Script ini menggunakan layanan **SMTP2GO** sebagai SMTP Relay untuk mengirimkan email backup secara aman menggunakan koneksi TLS.
+Saat ini saya menggunakan layanan **SMTP2GO** sebagai SMTP Relay untuk mengirimkan email backup secara aman menggunakan koneksi TLS.
 
 ---
 
