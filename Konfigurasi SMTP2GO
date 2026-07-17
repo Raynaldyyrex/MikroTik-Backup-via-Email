@@ -1,0 +1,110 @@
+## 📧 Tutorial Konfigurasi SMTP2GO
+
+### 1. Membuat Akun SMTP2GO
+
+1. Buka https://www.smtp2go.com/
+2. Klik **Sign Up** lalu buat akun.
+3. Lakukan verifikasi email.
+4. Login ke Dashboard SMTP2GO.
+
+---
+
+### 2. Membuat SMTP User
+
+1. Masuk ke menu **Sending → SMTP Users**.
+2. Klik **Add SMTP User**.
+3. Isi:
+   - **Username** : bebas (misal: mikrotik)
+   - **Password** : buat password yang kuat
+4. Klik **Create**.
+
+> Simpan Username dan Password karena akan digunakan pada MikroTik.
+
+---
+
+### 3. Informasi SMTP
+
+Gunakan pengaturan berikut:
+
+| Parameter | Nilai |
+|-----------|--------|
+| SMTP Server | mail.smtp2go.com |
+| Port | 2525 (Recommended) |
+| Alternatif Port | 25, 80, 587, 8025 |
+| TLS | Yes |
+| Username | SMTP Username |
+| Password | SMTP Password |
+
+---
+
+### 4. Konfigurasi di MikroTik
+
+Masuk ke **Tools → E-mail** kemudian isi seperti berikut:
+
+| Parameter | Nilai |
+|-----------|--------|
+| Server | mail.smtp2go.com |
+| Port | 2525 |
+| From | emailanda@domain.com |
+| User | Username SMTP2GO |
+| Password | Password SMTP2GO |
+| TLS | yes |
+
+Contoh melalui Terminal:
+
+```rsc
+/tool e-mail
+set address=mail.smtp2go.com \
+    port=2525 \
+    from="backup@example.com" \
+    user="mikrotik" \
+    password="passwordanda" \
+    tls=yes
+```
+
+---
+
+### 5. Melakukan Pengujian
+
+Kirim email percobaan menggunakan perintah berikut:
+
+```rsc
+/tool e-mail send \
+to="tujuan@email.com" \
+subject="SMTP2GO TEST" \
+body="Pengujian SMTP berhasil."
+```
+
+Apabila konfigurasi benar, email akan diterima dalam beberapa detik.
+
+---
+
+### 6. Troubleshooting
+
+#### TLS Handshake Failed
+
+Pastikan:
+
+- Menggunakan RouterOS versi terbaru.
+- Port **2525** atau **587** tidak diblokir ISP.
+- TLS diatur menjadi **yes/starttls**.
+- Username dan Password SMTP benar.
+
+---
+
+#### Authentication Failed
+
+Periksa kembali:
+
+- Username SMTP2GO
+- Password SMTP
+- Akun SMTP2GO masih aktif
+
+---
+
+#### Jika Email Tidak Masuk
+
+Periksa:
+
+- Folder Spam/Junk.
+- Dashboard SMTP2GO → Activity untuk melihat status pengiriman email.
